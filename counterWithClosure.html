@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <title> Counter </title>
+    <meta charset="utf-8">
+    <script>
+
+        function makeCounter() {
+            var count = 0;
+            return function() {
+                count = count + 1;
+                return count;
+            };
+        }
+
+        var count = makeCounter();
+        console.log("Counter: " + count());
+        console.log("Counter: " + count());
+        console.log("Counter: " + count());
+        console.log("Counter: " + count());
+        console.log("Counter: " + count());
+
+        var countTwo = makeCounter()
+
+
+        for (i = 0; i < 10; i++) {
+            console.log("Counter 2: " + countTwo());
+        }
+
+       /* console.log("Counter 2: " + countTwo());
+        console.log("Counter 2: " + countTwo());
+        console.log("Counter 2: " + countTwo());
+        console.log("Counter 2: " + countTwo());
+        console.log("Counter 2: " + countTwo());*/
+
+
+    </script>
+</head>
+<body>
+</body>
+</html>   

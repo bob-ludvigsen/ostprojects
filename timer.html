@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <title> setTimeout </title>
+    <meta charset="utf-8">
+    <script>
+
+        //count needs an initial value
+        var count = 0;
+
+        function timer(){
+
+            //When count is 10 or more return or stop calling timer()
+            if (count >= 10) {
+                return
+
+            }
+            return setTimeout(function() {
+                console.log(count + 1);
+                //Increment count with one
+                count += 1
+
+                //call timer again
+                 timer();
+            //delay 10 seconds
+            }, 10000);
+
+        }
+
+        window.onload = function() {
+            timer();
+        };
+
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title> IIFE </title>
+    <meta charset="utf-8">
+    <script>
+        (function() {
+            var message = "I've been clicked!";
+            window.onload = function() {
+                var div = document.querySelector("div");
+                div.onclick = function() {
+                    alert(message);
+                };
+            };
+        })();
+    </script>
+</head>
+<body>
+<div>click me!</div>
+</body>
+</html>   

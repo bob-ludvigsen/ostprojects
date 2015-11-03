@@ -1,0 +1,42 @@
+
+<!doctype html>
+<html>
+<head>
+    <title> Modifying functions </title>
+    <meta charset="utf-8">
+    <script>
+
+
+
+        var weatherStation = {
+            update: [],
+            addObserver: function(f) {
+                this.update.push(f);
+            },
+            notify: function() {
+                for (var i = 0; i < this.update.length; i++) {
+                    var f = this.update[i];
+                    f.apply(this, arguments);
+                }
+            }
+        };
+
+        weatherStation.addObserver(function(weather) {
+            console.log("The current temp is: " + weather.temp);
+        });
+
+        weatherStation.addObserver(function(weather) {
+            console.log("The current pressure is: " + weather.pressure, "The current megapressure is: " + weather.megapressure);
+        });
+
+        weatherStation.notify({ temp: 87, pressure: 29.93, megapressure: 329.93 });
+
+    </script>
+</head>
+<body>
+</body>
+</html>
+
+
+
+

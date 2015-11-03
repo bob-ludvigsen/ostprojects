@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <title> JavaScript Environment: Project </title>
+    <meta charset="utf-8">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #canvas {
+            background-color: yellow;
+            width: 100%;
+            height: 100%;
+        }
+
+        .pen {
+            position: absolute;
+            background-color: lightblue;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+
+        var Draw = (function () {
+            var div = null;
+            var el = null;
+
+
+            //create the pen elements and position on the canvas
+            var setDot = function (clx, cly) {
+                div = document.getElementById("canvas");
+                el = document.createElement("div");
+                el.setAttribute("class", "pen");
+                el.style.top = cly + "px";
+                el.style.left = clx + "px";
+                div.appendChild(el);
+            };
+
+            // Setup the three eventhandlers
+            var setUpEvents = function () {
+                // a bool to ckeck if the mouse is up or down
+                var mouesIsDown = null;
+                // get the canvas div
+                var mouse = document.getElementById("canvas");
+
+                // eventhandler for mousedown set the bool mouesIsDown to true
+                mouse.onmousedown = function (evt) {
+                    mouesIsDown = true;
+
+                }
+
+                // eventhandler for mousedown set the bool mouesIsDown to true
+                mouse.onmouseup = function (evt) {
+                    mouesIsDown = false;
+
+                }
+
+                mouse.onmousemove = function (evt) {
+
+                    if (mouesIsDown) {
+                        var x = evt.clientX;
+                        var y = evt.clientY;
+                        setDot(x, y);
+
+                    }
+                };
+
+            };
+
+            return {
+                init: setUpEvents
+            };
+
+        })();
+
+
+        window.onload = function () {
+            Draw.init();
+        };
+    </script>
+</head>
+<body>
+<div id="canvas"></div>
+</body>
+</html>   

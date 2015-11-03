@@ -1,0 +1,154 @@
+
+
+<!doctype html>
+<html>
+<head>
+    <title> Bug </title>
+    <meta charset="utf-8">
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0px;
+        }
+        div#container {
+            position: relative;
+
+        }
+        div.bug {
+            position: absolute;
+            width: 100px;
+            height: 76px;
+            background-image: url("https://courses.oreillyschool.com/advancedjavascript/homework/images/ladybug.png");
+            -webkit-transition: -webkit-transform 2s;
+            -moz-transition: -moz-transform 2s;
+            -o-transition: -o-transform 2s;
+            transition: transform 2s;
+        }
+        .up {
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+        .down {
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+        }
+        .right {
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        .left {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+    </style>
+    <script>
+
+        // your code here
+        function Bug(){
+            var sizeLeft = window.innerWidth/2;
+            var sizeTop = window.innerHeight/2;
+            var el = null;
+            display();
+            function display() {
+
+                el = document.createElement("div");
+                el.setAttribute("class", "bug");
+               el.style.top = sizeTop + 'px';
+                el.style.left = sizeLeft + 'px';
+
+
+                document.getElementById("container").appendChild(el);
+            }
+
+            function setDown(moveDwn) {
+                if (el) {
+                    sizeTop += moveDwn;
+                    el.style.top = sizeTop + "px";
+                    //el.style.height = size + "px";
+                }
+            }
+            function setUp(moveUp) {
+                if (el) {
+                    sizeTop -= moveUp;
+                    el.style.top = sizeTop + moveUp + "px";
+                    //el.style.height = size + "px";
+                }
+            }
+            function setLeft(moveLft) {
+                if (el) {
+                    sizeLeft -= moveLft;
+                    el.style.left = sizeLeft + moveLft + "px";
+                    //el.style.height = size + "px";
+                }
+            }
+            function setRight(moveRgt) {
+                if (el) {
+                    sizeLeft += moveRgt;
+                    el.style.left = sizeLeft + moveRgt + "px";
+                    //el.style.height = size + "px";
+                }
+            }
+
+
+            this.moveBug = function(key){
+
+                var elm = document.getElementsByClassName("bug");
+
+                // switch on the key value
+                switch(key) {
+                    //j = 106 (down)
+                    case 106:
+                            console.log(elm[0].style.top)
+                           // elm.classList.add("down")
+                       elm[0].className = "bug down";
+                        setDown(1)
+
+                        break;
+                    //k = 107 (up)
+                    case 107:
+                        elm[0].className = "bug up";
+                            setUp(1)
+                        break;
+                    //h = 104 (left)
+                    case 104:
+                        elm[0].className = "bug left";
+                            setLeft(1)
+                        break;
+                    //l = 108 (right)
+                    case 108:
+                        elm[0].className = "bug right";
+                            setRight(1)
+                        break;
+                    default:
+                        text = "I have never heard of that fruit...";
+                }
+
+
+
+            }
+
+        }
+
+        window.onload = function() {
+            var bug = new Bug("container");
+
+            // j = 106 (down), k = 107 (up), h = 104 (left) , l = 108 (right)
+            document.onkeypress = function(e) {
+                bug.moveBug((typeof e.which == "number") ? e.which : e.keyCode);
+            }
+        };
+
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

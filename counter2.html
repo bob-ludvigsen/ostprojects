@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+    <title> Counter  </title>
+    <meta charset="utf-8">
+    <script>
+        "use strict";
+        var counterModule = (function(initialValue) {
+            var counter = initialValue;
+
+            return {
+                increment: function() {
+                    counter++;
+                },
+                decrement: function() {
+                    counter--;
+                },
+                reset: function() {
+                    counter = 0;
+                },
+                getValue: function() {
+                    return counter;
+                }
+            };
+        })(0);
+
+        //make sure that none of the public properties in the counter can be modified!
+Object.defineProperties(counterModule,
+        {
+            "increment": {
+                writable: false
+            },
+            "decrement": {
+                writable: false
+            },
+            "reset": {
+                writable: false
+            },
+            "getValue": {
+                writable: false
+            },
+
+        }
+)
+        window.onload = function() {
+            counterModule.increment();
+            counterModule.increment();
+            counterModule.decrement();
+            counterModule.increment();
+            console.log(counterModule.getValue());
+            counterModule.reset();
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>

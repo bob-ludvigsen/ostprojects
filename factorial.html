@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <title> Recursion </title>
+    <meta charset="utf-8">
+    <style>
+        .square {
+            background-color: lightblue;
+            cursor: pointer;
+        }
+        .square p {
+            padding-top: 35%;
+            text-align: center;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <script>
+
+
+        function fact(n) {
+
+            if (n == 1) {
+                return 1;
+            }
+            else{
+                return n * fact(n - 1);
+            }
+
+        }
+
+        window.onload = function() {
+            console.log('Factorial of 1 is ' + fact(7))
+
+
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>      
