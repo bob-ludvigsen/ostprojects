@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="bubbles.css">
+    <script src="bubbles.js"></script>
+    <script>
+
+        window.onload = function () {
+
+            var r = confirm("Press ok to start a new game");
+            if (r == true) {
+                Bubbles.init();
+            } else {
+                x = "You pressed Cancel!";
+            }
+
+        };
+
+
+
+
+    </script>
+
 </head>
 <body>
-
+<div id="colorpad" class="color-1">
+    <div class="scoreboard">Time left: <span id="time"></span></div>
+    <div class="scoreboard">Your score is: <span id="score"></span></div>
+</div>
+<div id="gamepad" ></div>
 </body>
 </html>
